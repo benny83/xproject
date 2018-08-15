@@ -1,0 +1,8 @@
+.container
+  .form-group
+    Id:
+    = current_user.id
+  .form-group
+    Email:
+    = current_user.email
+  = link_to 'Edit password', edit_user_registration_path

@@ -1,0 +1,37 @@
+%h2= t('devise.links.registration')
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+
+  / %form
+  /   .form-group
+  /     %label{:for => "email"} Email address:
+  /     %input#email.form-control{:type => "email"}/
+  /   .form-group
+  /     %label{:for => "pwd"} Password:
+  /     %input#pwd.form-control{:type => "password"}/
+  /   .checkbox
+  /     %label
+  /       %input{:type => "checkbox"}/
+  /       Remember me
+  /   %button.btn.btn-default{:type => "submit"} Submit
+
+
+  %form
+    .form-group
+      %label{for: 'email'} Email address :
+      %br/
+      = f.email_field :email, autofocus: true
+    .form-group
+      %label{for: 'password'} Password :
+      - if @minimum_password_length
+        %em
+          (#{@minimum_password_length} characters minimum)
+      %br/
+      = f.password_field :password, autocomplete: "off"
+    .form-group
+      %label{for: 'password'} Password confirmation :
+      %br/
+      = f.password_field :password_confirmation, autocomplete: "off"
+    .actions
+      = f.submit "Sign up", class: 'btn btn-default'
+/ = render "devise/shared/links"
